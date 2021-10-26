@@ -95,7 +95,7 @@ O [Yarn](https://yarnpkg.com/) também é um Package Manager. Porém, com alguma
 
 ## Criando um servidor http com Express
 
-O objetivo dessa aula é dar início ao desenvolvimento da nossa API, que será a base para a primeira aplicação do curso, o myContacts. Para essa API, iremos utilizar alguns pacotes (ex.: express), que nos auxiliará na construção da API.
+O objetivo dessa aula é dar início ao desenvolvimento da nossa API, que será a base para a primeira aplicação do curso, o **myContacts**. Para essa API, iremos utilizar alguns pacotes (ex.: express), que nos auxiliará na construção da API.
 
 ### Iniciando:
 
@@ -130,6 +130,18 @@ Para iniciar qualquer projeto node: `npm init -y` ou `yarn init`
 # Aula 3
 
 ## Instalando o Nodemon
+
+O Nodemon é um pacote de desenvolvimento, que nos auxilia na produtividade de construções de aplicação com o Node. 
+
+Ele, por sua vez, fica "ouvindo" nosso servidor, fazendo com que não precisemos reiniciar o servidor sempre que quisermos ver uma alteração implementada.
+
+**Instalando o nodemon como dependência de desenvolvimento:**
+
+`yarn add nodemon -D`  ou `npm install nodemon -D`
+
+**Usando o nodemon:**
+
+`npx nodemon src/index.js`
 
 ---
 
