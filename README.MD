@@ -13,7 +13,7 @@ Feito com ❤️ by [**Milton Soares**](https://www.linkedin.com/in/soaresmilton
 
 ## Objetivo
 
-Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvolver meu projeto chamado [getBooks]([https://github.com/soaresmilton/getbooks](https://github.com/soaresmilton/getbooks))
+Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvolver meu projeto chamado [getBooks](https://github.com/soaresmilton/getbooks)
 
 ---
 
