@@ -5,6 +5,9 @@
   "repository": "https://github.com/soaresmilton/api-express.git",
   "author": "Milton Soares <eng.milton.soares@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },

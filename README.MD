@@ -149,6 +149,45 @@ Ele, por sua vez, fica "ouvindo" nosso servidor, fazendo com que não precisemos
 
 ## Npm scripts
 
+## Npm scripts
+
+Os *npm's scripts* servem, basicamente, para duas coisas:
+
+1. Fazer automações para processos e tarefas repetitivas
+2. Atalhos para comandos longos e chatos de escrever
+
+### Entendendo automações com npm scripts:
+
+Para criar um novo npm script:
+
+- No arquivo *package.json* criar um novo nodo chamado "scripts". Dentro desse nodo, especificar a chave, que será o comando acionador do script e o valor dessa chave será o comando node executado.
+- No código abaixo, vamos criar um script para iniciar nosso servidor.
+
+```json
+{
+  "name": "express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/soaresmilton/api-express.git",
+  "author": "Milton Soares <eng.milton.soares@gmail.com>",
+  "license": "MIT",
+
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
+
+```
+
+- No caso, o script substitui todo o comando: `nodemon src/index.js`, que nós estávamos utilizando para iniciar um servidor, por `yarn dev` ou `npm run dev`.
+
 ---
 
 # Aula 5
