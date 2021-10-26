@@ -42,4 +42,4 @@ Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvo
 
 ---
 
-# Aula 1 - Yarn e Npm
+# Aula 1
