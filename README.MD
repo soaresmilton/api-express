@@ -95,6 +95,36 @@ O [Yarn](https://yarnpkg.com/) também é um Package Manager. Porém, com alguma
 
 ## Criando um servidor http com Express
 
+O objetivo dessa aula é dar início ao desenvolvimento da nossa API, que será a base para a primeira aplicação do curso, o myContacts. Para essa API, iremos utilizar alguns pacotes (ex.: express), que nos auxiliará na construção da API.
+
+### Iniciando:
+
+Para iniciar qualquer projeto node: `npm init -y` ou `yarn init`
+
+**Instalando o express:**
+
+`yarn add express`
+
+### Desenvolvimento da aplicação
+
+1. `mkdir src && cd src && touch index.js`
+2. Iniciar o servidor express. O nosso arquivo *index.js*:
+    
+    ```jsx
+    const express = require('express');
+    const app = express();
+    
+    const PORT = 3000;
+    
+    app.get('/', (request, response) => {
+      response.send('<h1>Hello World</h1>')
+    })
+    
+    app.listen(PORT, () => {
+      console.log(`SERVER IS RUNING AT ===> http://localhost:${PORT}`);
+    })
+    ```
+
 ---
 
 # Aula 3
