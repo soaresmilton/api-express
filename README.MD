@@ -146,9 +146,6 @@ Ele, por sua vez, fica "ouvindo" nosso servidor, fazendo com que não precisemos
 ---
 
 # Aula 4
-
-## Npm scripts
-
 ## Npm scripts
 
 Os *npm's scripts* servem, basicamente, para duas coisas:
