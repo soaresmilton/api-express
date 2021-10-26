@@ -19,11 +19,6 @@ Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvo
 
 ### 📌Índice
 
-- [Node.JS com Express🔥](#nodejs-com-express)
-  - [Get in touch](#get-in-touch)
-  - [![Instagram Badge](https://www.instagram.com/soaresmiltinho/)](#)
-  - [Objetivo](#objetivo)
-    - [📌Índice](#índice)
 - [Aula 1](#aula-1)
   - [Package Managers - Npm and Yarn](#package-managers---npm-and-yarn)
 - [Aula 2](#aula-2)
