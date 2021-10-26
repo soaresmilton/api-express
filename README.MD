@@ -109,17 +109,17 @@ Para iniciar qualquer projeto node: `npm init -y` ou `yarn init`
 
 1. `mkdir src && cd src && touch index.js`
 2. Iniciar o servidor express. O nosso arquivo *index.js*:
-    
+
     ```jsx
     const express = require('express');
     const app = express();
-    
+
     const PORT = 3000;
-    
+
     app.get('/', (request, response) => {
       response.send('<h1>Hello World</h1>')
     })
-    
+
     app.listen(PORT, () => {
       console.log(`SERVER IS RUNING AT ===> http://localhost:${PORT}`);
     })
@@ -131,7 +131,7 @@ Para iniciar qualquer projeto node: `npm init -y` ou `yarn init`
 
 ## Instalando o Nodemon
 
-O Nodemon é um pacote de desenvolvimento, que nos auxilia na produtividade de construções de aplicação com o Node. 
+O Nodemon é um pacote de desenvolvimento, que nos auxilia na produtividade de construções de aplicação com o Node.
 
 Ele, por sua vez, fica "ouvindo" nosso servidor, fazendo com que não precisemos reiniciar o servidor sempre que quisermos ver uma alteração implementada.
 
@@ -188,8 +188,52 @@ Para criar um novo npm script:
 ---
 
 # Aula 5
-
 ## Configurando o Eslint e o editorconfig
+
+O Eslint é uma ferramenta desenvolvida para padronizar a forma que escrevemos o código, para manter ele limpo, organizado e padronizado ao longo do tempo. Esse tipo de ferramenta, garante que iremos ter consistência na digitação do nosso código, de forma a garantir, por exemplo, que sempre colocaremos ;, ou utilizaremos aspas simples para manusear strings.
+
+**Iniciando a configuração:**
+
+1. Instalar a extensão ESLint no VSCODE
+2. Instalar o pacote do ESLint no projeto:
+    1. `yarn add eslint -D`
+3. Acionar o comando de inicialização da ferramenta: `yarn eslint --init`. Após executar o comando, algumas perguntas apareceram para a configuração. Para esse projeto, responderemos:
+    1. pergunta 1: Opção 3
+    2. Pergunta 2: Opção 2
+    3. Pergunta 3: Opção 3
+    4. Pergunta 4: No
+    5. Pergunta 5: Node → Primeiro apertar a tecla espaço para desmarcar a opção "browser" e selecionar a opção Node para continuar.
+    6. Pergunta 6: Opção 1
+    7. Pergunta 7: Opção 1 - Style Guide do Airbnb
+    8. Pergunta 8: Opção 1
+    9. Pergunta 9: yes
+
+    Após a configuração, rodar o comando yarn no terminal para o Yarn reconhecer o eslint também.
+
+
+### Editorconfig
+
+A segunda ferramenta de configurações que iremos utilziar é o EditorConfig for VS Code. Da mesma forma, devemos instalar essa extensão no nosso editor de texto.
+
+**Usando o editorconfig**
+
+1. Na parte *explorer,* onde mostra a estrutura de arquivos do nosso editor de texto, clicar com o botão direito do mouse e selecionar a opção: ***Generate .editorconfig***
+2. Isso vai criar um documento *.editorconfig* com algumas configurações pré determinadas
+
+    ```jsx
+    # EditorConfig is awesome: https://EditorConfig.org
+
+    # top-most EditorConfig file
+    root = true
+
+    [*]
+    indent_style = space
+    indent_size = 2
+    end_of_line = lf
+    charset = utf-8
+    trim_trailing_whitespace = true //vem false como padrão
+    insert_final_newline = true // vem false como padrão
+    ```
 
 ---
 
