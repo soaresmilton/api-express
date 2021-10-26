@@ -79,6 +79,15 @@ Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvo
 
 ## Package Managers - Npm and Yarn
 
+### Tipos de módulo do Node.JS
+
+- Nativos (ex.: *http, fs, os, URL*);
+- Arquivos criados JavaScript;
+- Node Package Manager (npm).
+
+Instalando o node, já se instala o npm automaticamente.
+
+O Yarn também é um Package Manager. Porém, com algumas funcionalidades melhoradas em relação ao NPM, tais como eficiência na instalação de pacotes e o arquivo *yarn.lock* que garante estabilidade em versões futuras da aplicação. Vale ressaltar que, atualmente, o npm também tem a funcionalidade lock em suas features.
 ---
 
 # Aula 2
