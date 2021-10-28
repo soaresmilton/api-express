@@ -326,13 +326,27 @@ Como a API a ser construída será relacionados a gerenciamento de contatos, por
     //Design Pattern: Singleton => Podemos ter apenas uma única instância desse objeto no app
     module.exports = new ContactController();
     ```
-## Criando Controller de Contatos
 
 ---
 
 # Aula 7
 
 ## Entendendo o Repository Pattern
+
+**Definição:**
+Repository Pattern é uma layer (camada) de abstração de acesso ao Data Source (fonte de dados, que pode ser: SQL, NoSQL, .json, API).
+
+**Vantagens de usar o Repository Pattern:**
+
+O repository pattern tira a obrigação de implementar dados sensíveis, como a regra de negócio principal da aplicação, dentro de um controller. Consequentemente, deixa o código mais fácil de se manter a longo prazo, bem como seguro contra erros de lógica e implementação.
+
+Exemplo: caso em algum momento do desenvolvimento da aplicação, necessite trocar o banco de dados SQL para um NoSQL, podemos refatorar somente o repository, sem fazer alterações sensíveis no controller
+
+Dessa forma, a arquitetura básica desse pattern fica:
+
+`Controller ↔ Repository ↔ Data Source`
+
+Sendo assim, o Controller não tem interesse em como o repository irá criar seus métodos para criação de entidades dentro da aplicação.
 
 ---
 
