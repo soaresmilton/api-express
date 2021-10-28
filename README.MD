@@ -354,6 +354,101 @@ Sendo assim, o Controller não tem interesse em como o repository irá criar seu
 
 ## Criando Repository de Contatos
 
+**Iniciando:**
+
+- Criar pasta *repositories* dentro da pasta app.
+- Criar arquivo repository da entidade em questão. Nesse caso, criar o arquivo *ContactRepository.*
+- Nessa aplicação, também iremos usar o pattern Singleton para exportar o ContactRepository como uma classe instanciada.
+- Na classe instanciada, iremos criar todos os métodos que o repository necessita para manipular o data source.
+- Iremos iniciar a aplicação com um Data Source mocado, para que futuramente, possamos entender o sentido de usar o Repository Pattern na prática, refatorando o repository e migrando o Data Source para o PostgreSQL
+- Instalar a lib *uuidv4* para gerar hashs para nosso ID ser uma string alfanumérica → melhora a segurança de nossos dados; `yarn add uuidv4`
+- Cria o mock no proprio arquivo do repository, sendo que o mock é um array de objetos.
+- Agora, implementamos uma lógica bem simples para retornar a lista de contatos: criar metodo findAll em nossa classe **ContactRepository** que simplesmenre retorna os contatos. Após isso, importar o repository no controller e chamar o método ContactRepository.findAll() no método index();
+
+    Nesse ponto, nossos arquivos *ContactRepository.js* e *ContactRepository.js* ficaram dessa maneira:
+
+    *ContactRepository:*
+
+    ```jsx
+    const { uuid } = require('uuidv4');
+    const contacts = [
+      {
+        id: uuid(),
+        name: 'Milton',
+        email: 'milton@gmail.com',
+        phone: '3555555555',
+        category_id: uuid(),
+      },
+    ]
+
+    class ContactRepository {
+      // Listar todos os registros do repositório
+      findAll() {
+        return contacts;
+      }
+    }
+
+    module.exports = new ContactRepository();
+    ```
+
+    *ContactRepository:*
+
+    ```jsx
+    const ContactRepository = require('../repositories/ContactRepository');
+
+    class ContactController {
+      async index(request, response) {
+        //lista todos os registros
+        const contacts = await ContactRepository.findAll();
+        response.json(contacts);
+      }
+
+      show() {
+        //obter um registro
+      }
+
+      store() {
+        //Criar novo registro
+      }
+
+      update() {
+        //Editar um registro
+      }
+
+      delete() {
+        // Deletar um registro
+      }
+    }
+
+    //Design Pattern: Singleton => Podemos ter apenas uma única instância desse objeto no app
+    module.exports = new ContactController();
+    ```
+
+- Nesse ponto é importante observar que, quando tivermos conectados a um banco de dados, a chamada dos dados do banco para que seja possível listar os contatos na tela, é uma função bloqueante devido ao tempo de resposta do banco de dados. Então, temos que transformar o método findAll em uma promise JS e utilizar o conceito de async / await no método index() do Contact Controller.  Veja na prática:
+
+
+    ```jsx
+    const { uuid } = require('uuidv4');
+    const contacts = [
+      {
+        id: uuid(),
+        name: 'Milton',
+        email: 'milton@gmail.com',
+        phone: '3555555555',
+        category_id: uuid(),
+      },
+    ]
+
+    class ContactRepository {
+      // Listar todos os registros do repositório
+      findAll() {
+        return new Promise((resolve) => resolve(contacts));
+      }
+    }
+
+    module.exports = new ContactRepository();
+    ```
+
 ---
 
 # Aula 9
