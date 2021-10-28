@@ -361,7 +361,7 @@ Sendo assim, o Controller não tem interesse em como o repository irá criar seu
 - Nessa aplicação, também iremos usar o pattern Singleton para exportar o ContactRepository como uma classe instanciada.
 - Na classe instanciada, iremos criar todos os métodos que o repository necessita para manipular o data source.
 - Iremos iniciar a aplicação com um Data Source mocado, para que futuramente, possamos entender o sentido de usar o Repository Pattern na prática, refatorando o repository e migrando o Data Source para o PostgreSQL
-- Instalar a lib *uuidv4* para gerar hashs para nosso ID ser uma string alfanumérica → melhora a segurança de nossos dados; `yarn add uuidv4`
+- Instalar a lib *uuidv4* para gerar hashs para nosso ID ser uma string alfanumérica → melhora a segurança de nossos dados; `yarn add uuid`
 - Cria o mock no proprio arquivo do repository, sendo que o mock é um array de objetos.
 - Agora, implementamos uma lógica bem simples para retornar a lista de contatos: criar metodo findAll em nossa classe **ContactRepository** que simplesmenre retorna os contatos. Após isso, importar o repository no controller e chamar o método ContactRepository.findAll() no método index();
 
@@ -428,14 +428,14 @@ Sendo assim, o Controller não tem interesse em como o repository irá criar seu
 
 
     ```jsx
-    const { uuid } = require('uuidv4');
+    const { v4 } = require('uuidv4');
     const contacts = [
       {
-        id: uuid(),
+        id: v4(),
         name: 'Milton',
         email: 'milton@gmail.com',
         phone: '3555555555',
-        category_id: uuid(),
+        category_id: v4(),
       },
     ]
 
@@ -452,6 +452,84 @@ Sendo assim, o Controller não tem interesse em como o repository irá criar seu
 ---
 
 # Aula 9
+
+## Criando as rotas de show e delete
+
+Nessa aula iremos implementar os métodos show e delete. Aprenderemos a como receber parâmetros nas rotas com o express e dar continuidade no desenvolvimento de nossa API.
+
+**Método SHOW:**
+
+- No arquivo routes.js, criar a rota para o show. Nesse ponto, nosso arquivo de rotas vai ficar dessa maneira:
+
+    ```jsx
+    const { Router } = require('express');
+    const router = Router();
+    const ContactController = require('./app/controllers/ContactController');
+
+    router.get('/contacts', ContactController.index);
+    router.get('/contacts/:id', ContactController.show);
+
+    module.exports = router;
+    ```
+
+- Uma vez criado a rota que recebe o param desejado na URL, podemos implementar os métodos no Controller e no repository. Para o Controller, por convenção, implementaremos o método *show()*. A implementação desse método fica:
+
+    ```jsx
+    async show(request, response) {
+        //obter um registro
+        const { id } = request.params;
+        const contact = await ContactRepository.findById(id);
+
+        if (!contact) return response.status(404).json({ error: 'Contact not found' });
+
+        response.json(contact);
+      }
+    ```
+
+- Agora, devemos impelemntar o método **findById()** dentro do nosso repository. É esse método que de fato encontra o contato pelo seu ID. Aqui, já conseguimos enchergar melhor um pouco mais da ideia por trás o Repository Pattern. Sendo assim, a implementação do método *findById()* fica:
+
+    ```jsx
+    findById(id) {
+        return new Promise((resolve) => resolve(
+          contacts.find((contact) => contact.id === id)
+        ));
+      }
+    ```
+
+
+**MÉTODO DELETE:**
+
+- Criar rota delete no arquivo de rotas;
+
+    ```jsx
+    router.delete('/contacts/:id', ContactController.delete);
+    ```
+
+- Implementar o método delete no Controller
+
+    ```jsx
+    async delete(request, response) {
+        // Deletar um registro
+        const { id } = request.params;
+
+        const contact = await ContactRepository.findById(id);
+        if (!contact) return response.status(404).json({ error: 'Contact not found' });
+
+        await ContactRepository.delete(id);
+        response.sendStatus(204); // 204: No content
+      }
+    ```
+
+- Implementar o método delete do Repository:
+
+    ```jsx
+    delete(id) {
+        return new Promise((resolve) => {
+          contacts  = contacts.filter((contact) => contact.id !== id)
+          resolve();
+        })
+      }
+    ```
 
 ---
 
