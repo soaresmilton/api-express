@@ -241,6 +241,92 @@ A segunda ferramenta de configurações que iremos utilziar é o EditorConfig fo
 
 ## Criando Controller de Contatos
 
+**Definição de controller**
+
+Um *controller* atua como um centralizador de funcionalidades ou regras de negócio de uma determinada entidade de nossa aplicação.
+
+Como a API a ser construída será relacionados a gerenciamento de contatos, portanto iremos criar um controller específico para os contatos.
+
+**Iniciando nossa estrutura:**
+
+- Em src, criar uma pasta app, em app criar a pasta controllers.
+    - A pasta controllers será nosso local de criação dos controllers para cada entidade que nossa aplicação necessitar;
+    - Resumindo: `cd src && mkdir app && cd app && mkdir controllers && cd controllers && touch ContactController.js`
+
+    Estrutura de pastas nesse ponto da aplicação:
+
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a636e647-87c9-402a-a01d-039740a3cf8e/Untitled.png)
+
+    Arquitetura do nosso projeto até o momento. Destacando o controller criado
+
+- Nos controllers, vamos implementálo utilizando classes e iremos utilizar um Design Pattern chamado de Singleton. Esse pattern diz que podemos ter apenas uma única instancia do objeto em nosso app.
+- Para os métodos da nossa classe referente ao Controller, iremos abordar seus métodos usando uma convenção padrão, em que os métodos:
+    - index() ⇒ Usado para listar todos os registros do Controller;
+    - show() ⇒ Usado para obter somente um registro;
+    - store() ⇒ Cria novo registro
+    - update() ⇒ Edita um registro
+    - delete() ⇒ Deleta um registro
+- Continuando ⇒ Mover nossas rotas criadas no arquivo *index.js*  para um novo arquivo chamado *routes.js* criado dentro da pasta src.
+
+    Nosso arquivo routes.js deverá ficar dessa maneira:
+
+    ```jsx
+    const { Router } = require('express');
+    const router = Router();
+    const ContactController = require('./app/controllers/ContactController');
+
+    router.get('/contacts', ContactController.index);
+
+    module.exports = router;
+    ```
+
+    O arquivo index.js:
+
+    ```jsx
+    const express = require("express");
+    const routes = require('./routes');
+    const app = express();
+
+    const PORT = 3000;
+
+    app.use(routes);
+
+    app.listen(PORT, () => {
+      console.log(`SERVER IS RUNING AT ===> http://localhost:${PORT}`);
+    });
+    ```
+
+    O arquivo ContactController.js
+
+    ```jsx
+    class ContactController {
+      index(request, response) {
+        //lista todos os registros
+        response.send('Sendo from Contact Controller')
+      }
+
+      show() {
+        //obter um registro
+      }
+
+      store() {
+        //Criar novo registro
+      }
+
+      update() {
+        //Editar um registro
+      }
+
+      delete() {
+        // Deletar um registro
+      }
+    }
+
+    //Design Pattern: Singleton => Podemos ter apenas uma única instância desse objeto no app
+    module.exports = new ContactController();
+    ```
+## Criando Controller de Contatos
+
 ---
 
 # Aula 7
