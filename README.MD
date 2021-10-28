@@ -257,6 +257,7 @@ Como a API a ser construída será relacionados a gerenciamento de contatos, por
 
     ![Arquitetura de pastas do nosso projeto até o momento](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a636e647-87c9-402a-a01d-039740a3cf8e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211028%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211028T010122Z&X-Amz-Expires=86400&X-Amz-Signature=c6847af7944c723aba3ba1188bb9187182eef8b5b8a9980c55049120a58fa1e2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
+
     Arquitetura do nosso projeto até o momento. Destacando o controller criado
 
 - Nos controllers, vamos implementálo utilizando classes e iremos utilizar um Design Pattern chamado de Singleton. Esse pattern diz que podemos ter apenas uma única instancia do objeto em nosso app.
