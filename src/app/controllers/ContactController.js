@@ -5,6 +5,7 @@ class ContactController {
     //lista todos os registros
     const contacts = await ContactRepository.findAll();
     response.json(contacts);
+
   }
 
   async show(request, response) {
