@@ -534,7 +534,27 @@ Nessa aula iremos implementar os métodos show e delete. Aprenderemos a como rec
 ---
 
 # Aula 10
+## O que são Middlewares?
 
+**Como funciona o life cycle de uma request:**
+
+Toda vez que uma request "chega" a API precisa resolver essa requisição. E pra resolver essa requisição nós chamamos um método de um Controller, que é onde está localizado nossa regra de negócio. Ao fim da resolução de nossa request, nós respondemos alguma coisa, enviando uma response (seja um sucesso ou um erro).
+
+>Request → Repository → Controller → response
+
+**Com os Middlewares**
+
+Os middlewares,  manipulam os objetos *request* e *response*. Fazendo todas as ações necessárias nesses objetos, inclusive inserindo novas propriedades a eles e disponibilizando para todos os controllers  da aplicação. Ou até mesmo executando para coisas específicas para uma determinada rota ou determinado controller.
+
+Outra funcionalidade dos middlewares é poder controlar o life cycle do request. Como assim?
+
+Essencialmente,  os middlewares antecipam uma request, antes dessa request chegar ao Controller. Dessa forma, os middlewares conseguem responder alguma coisa para a request caso seja necessário. Sendo assim, conseguem decidir se a request continuará o caminho de execução "normal", sendo enviada para o Controller resolver a request ou se a requisição será interrompida e alguma resposta será retornada para a própria request.
+
+>Request ↔ Repository → Controller - response
+
+**Caso de uso commum:**
+
+- Autenticação → validação de usuário.
 
 ---
 
