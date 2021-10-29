@@ -39,7 +39,7 @@ Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvo
 
 10. [O que são Middlewares?](#aula-10)
 
-11. [Aula11](#aula-11)
+11. [Criando a rota de cadastro de Contatos](#aula-11)
 
 12. [Aula12](#aula-12)
 
@@ -559,7 +559,74 @@ Essencialmente,  os middlewares antecipam uma request, antes dessa request chega
 ---
 
 # Aula 11
+## Criando a rota de cadastro de Contatos
 
+- Primeiro passo criar rota com método POST no arquivo routes.js:
+
+    ```jsx
+    router.post('/contacts', ContactController.store);
+    ```
+
+- Chamar o método (middleware) json no arquivo index.js:
+
+    ```jsx
+    app.use(json());
+    ```
+
+- Implementar os métodos que irão fazer o registro das informações. Nesse caso, no Controller, o método usado executar a criação de contatos é o store(). No Repository, os métodos utilizados são chamados de findByEmail() - que verifica se o email já foi cadastrado anteriormente e o create() → que necessariamente é usado para criar o contato.
+
+    **Método store() → no Controller**
+
+    ```jsx
+    async store(request, response) {
+        //Criar novo registro
+        const { name, email, phone, category_id } = request.body;
+
+        if(!name) {
+          return response.status(400).json({ error: 'Name is required' });
+        }
+
+        const contactExists = await ContactRepository.findByEmail(email);
+        if (contactExists) {
+          return response.status(400).json({ error: 'This email already been taken' })
+        }
+
+        const contact = await ContactRepository.create({
+          name, email, phone, category_id
+        });
+
+        response.json(contact)
+      }
+    ```
+
+    **Método findByEmail() - No Repository:**
+
+    ```jsx
+    findByEmail(email) {
+        return new Promise((resolve) => resolve(
+          contacts.find((contact) => contact.email === email)
+        ));
+      }
+    ```
+
+    **Método create() - no repository**
+
+    ```jsx
+    create({name, email, phone, category_id}) {
+        return new Promise((resolve) => {
+          const newContact = {
+            id: v4(),
+            name,
+            email,
+            phone,
+            category_id: v4()
+          }
+
+          contacts.push(newContact)
+          resolve(newContact);
+        })
+      }
+    ```
 ---
 
 # Aula 12
