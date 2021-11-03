@@ -41,7 +41,7 @@ Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvo
 
 11. [Criando a rota de cadastro de Contatos](#aula-11)
 
-12. [Aula12](#aula-12)
+12. [Criando a rota de edição dos Contatos](#aula-12)
 
 13. [Aula13](#aula-13)
 
@@ -630,6 +630,66 @@ Essencialmente,  os middlewares antecipam uma request, antes dessa request chega
 ---
 
 # Aula 12
+
+## Criando a rota de edição dos Contatos
+
+Para finalizarmos a primeira parte de nossa API, falta construir nossa rota de edição de contatos.
+
+Para isso, seguimos:
+
+- Criando a rota com método HTTP do tipo PUT. em *routes.js*:
+
+```jsx
+router.put('/contacts/:id', ContactController.update);
+```
+
+- Implementando o método update no Controller. Em *ContactController.js:*
+
+```jsx
+async update(request, response) {
+    //Editar um registro
+    const { id } = request.params;
+    const { name, email, phone, category_id } = request.body;
+
+    const contactExists = await ContactRepository.findById(id);
+    if (!contactExists) return response.status(404).json({ error: 'User not found' });
+
+    if (!name) return response.status(400).json({ error: 'Name is required' });
+
+    const contactByEmail = await ContactRepository.findByEmail(email);
+    if (contactByEmail && contactByEmail.id !== id) return response.status(400).json({ error: 'This e-mail is already in use' });
+
+    const contact = await ContactRepository.update(id, {
+      name, email, phone, category_id
+    });
+
+    response.json(contact);
+  }
+```
+
+- Implementar o método update no Repository: Em *ContactRepository.js:*
+
+```jsx
+update(id, {
+    name, email, phone, category_id,
+  }) {
+    return new Promise((resolve) => {
+      const updatedContact = {
+        id,
+        name,
+        email,
+        phone,
+        category_id,
+      };
+
+      contacts = contacts.map((contact) => (
+        contact.id === id ? updatedContact : contact
+      ));
+
+      resolve(updatedContact);
+    });
+  }
+```
 
 ---
 
