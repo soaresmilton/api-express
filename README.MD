@@ -43,35 +43,35 @@ Com a evolução do módulo, quero utilizar os conceitos aprendidos para desenvo
 
 12. [Criando a rota de edição dos Contatos](#aula-12)
 
-13. [Aula13](#aula-13)
+13. [Próximos passos](#aula-13)
 
-14. [Aula14](#aula-14)
+14. [O que é o Docker?](#aula-14)
 
-15. [Aula15](#aula-15)
+15. [Instalando o Docker](#aula-15)
 
-16. [Aula16](#aula-16)
+16. [Comandos Básicos do Docker](#aula-16)
 
-17. [Aula17](#aula-17)
+17. [Preparando o Banco de Dados](#aula-17)
 
-18. [Aula18](#aula-18)
+18. [Criando a tabela de Contatos](#aula-18)
 
-19. [Aula19](#aula-19)
+19. [Conectando o Node ao Postgres](#aula-19)
 
-20. [Aula20](#aula-20)
+20. [Refatorando o método create](#aula-20)
 
-21. [Aula21](#aula-21)
+21. [Refatorando os métodos de find](#aula-21)
 
-22. [Aula22](#aula-22)
+22. [Ordenando os resultados do SELECT](#aula-22)
 
-23. [Aula23](#aula-23)
+23. [Refatorando o método update](#aula-23)
 
-24. [Aula24](#aula-24)
+24. [Refatorando o método delete](#aula-24)
 
-25. [Aula25](#aula-25)
+25. [Criando o módulo de Categorias](#aula-25)
 
-26. [Aula26](#aula-26)
+26. [Trabalhando com JOINS](#aula-26)
 
-27. [Aula27](#aula-27)
+27. [Capturando e tratando erros](#aula-27)
 
 ---
 
