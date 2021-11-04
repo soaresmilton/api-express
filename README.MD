@@ -725,8 +725,9 @@ O Docker, portanto, viabiliza o uso de VMs dentro de um host (AWS por exemplo) p
 ---
 
 # Aula 15
-
 ## Instalando o Docker
+
+Para a instalação, basta seguir o passo a passo na documentação no próprio site do [Docker](https://www.docker.com/).
 
 ---
 
