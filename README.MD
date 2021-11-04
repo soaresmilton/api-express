@@ -709,7 +709,7 @@ Nas próximas aulas iremos entender o conceito de DOCKER e conectar nossa aplica
 
 ## O que é docker?
 
-Docker é uma *container engine* muito utilizada para trabalhar com a ideia de virtualização de imagens dentro de um host, poupando recursos e disponibilizando soluções para atuação de vários serviços integrados, sem se preocupar com atualizações de libs ou binários específicos.
+Docker é uma *[container engine](https://www.docker.com/resources/what-container)* muito utilizada para trabalhar com a ideia de virtualização de imagens dentro de um host, poupando recursos e disponibilizando soluções para atuação de vários serviços integrados, sem se preocupar com atualizações de libs ou binários específicos.
 
 O Docker, portanto, viabiliza o uso de VMs dentro de um host (AWS por exemplo) para rodar diferentes partes de nossa aplicação (uma VM para o Node na versão X outra VM para o node na versão Y e outra VM para o postgreSQL na versão Z) utilizando o kernel do Host, porém, cada qual em sua própria VM com suas libs e bins.
 
@@ -725,6 +725,8 @@ O Docker, portanto, viabiliza o uso de VMs dentro de um host (AWS por exemplo) p
 ---
 
 # Aula 15
+
+## Instalando o Docker
 
 ---
 
