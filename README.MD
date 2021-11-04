@@ -733,6 +733,21 @@ Para a instalação, basta seguir o passo a passo na documentação no próprio 
 
 # Aula 16
 
+## Comandos básicos do Docker
+
+Essa aula aborda os comandos básicos e mais usados do Docker.
+
+Via de regra, a primeira coisa a se fazer é baixar a imagem que iremos utilizar, para depois criar o contêiner:
+
+- `sudo docker pull postgres` ⇒ baixa a imagem do postgres
+- `sudo docker image ls` ⇒ lista todas as imagens baixadas
+- `sudo docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres` ⇒ Cria o container com base na imagem baixada. As flags: - -name: define um nome para o container, -e: define as variáveis de ambiente que a gente quiser ter, nesse caso temos as que definem o usuário e senha do DB, -p: define a porta de uso, no caso do postgres a sua porta padrão é a 5432, portanto iremos utilizá-la, por fim, a flag -d: nome da imagem que iremos rodar dentro do container, portanto é através dessa tag que definimos a imagem → container. == Após rodar esse comando, será gerado uma hash (nesse caso: 5d7c2a46d169c679235ca6edc9a47bfae7a93a8865ef7639a145f9b755ed67be), que indica que o container foi criado
+- `sudo docker container ls` ou `sudo docker ps`⇒ lista os containers
+- `sudo docker stop <CONTAINE_NAME>` ou `sudo docker stop <CONTAINER_ID>` ⇒ para de executar o container, porém não exclui esse container
+- `sudo docker ps -a` ou `sudo docker container ls -a` ⇒ lista todos os containers criados, incluindo os containers que não estão ativos
+- `sudo docker start <CONTAINER_NAME>` ou `sudo docker start <CONTAINER_ID>` ⇒ inicia o repositório que estava inativo ou 'stopado'
+- `sudo docker rm -f <CONTAINER_ID>` ou `sudo docker container rm <CONTAINER_NAME>` ⇒ remove/exclui o container docker. Antes de excluir um container, é necessário stopar ele, executando o comando do passo 2.
+- `sudo docker rmi <IMAGE_NAME>` ou `sudo docker rmi <IMAGE_ID>` ⇒ Exclui a **IMAGEM.** Porém, antes de deletar uma imagem, temos que parar o(s) container(s) que está rodando com essa imagem, apagar o container e assim apagar a imagem.
 ---
 
 # Aula 17
