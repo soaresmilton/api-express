@@ -695,6 +695,14 @@ update(id, {
 
 # Aula 13
 
+## Próximos passos
+
+Agora que nossas rotas da API estão construídas e funcionando, podemos dar um passo além na construção de nossa aplicação.
+
+Portanto, podemos refatorar nossos repositories, desfazendo dos dados em memória que construímos através de um mock.
+
+Nas próximas aulas iremos entender o conceito de DOCKER e conectar nossa aplicação em um banco de dados PostgreSQL.
+
 ---
 
 # Aula 14
