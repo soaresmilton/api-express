@@ -707,6 +707,21 @@ Nas próximas aulas iremos entender o conceito de DOCKER e conectar nossa aplica
 
 # Aula 14
 
+## O que é docker?
+
+Docker é uma *container engine* muito utilizada para trabalhar com a ideia de virtualização de imagens dentro de um host, poupando recursos e disponibilizando soluções para atuação de vários serviços integrados, sem se preocupar com atualizações de libs ou binários específicos.
+
+O Docker, portanto, viabiliza o uso de VMs dentro de um host (AWS por exemplo) para rodar diferentes partes de nossa aplicação (uma VM para o Node na versão X outra VM para o node na versão Y e outra VM para o postgreSQL na versão Z) utilizando o kernel do Host, porém, cada qual em sua própria VM com suas libs e bins.
+
+![Imagem explicativa do funcionamento do docker](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2d46ee47-8b70-41c8-80d7-ecb620e59570/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211104%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211104T180132Z&X-Amz-Expires=86400&X-Amz-Signature=f5c83da13efad1db91236bf8bf9e447ae1872256223f803d6a89801a42b9bf22&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+### Por que usar Containers?
+
+- As aplicações rodam de forma isolada (não interferem uma na outra);
+- Usa o mesmo Kernel da máquina base, tornando-se mais leve e eficiente quando comparado às VM's tradicionais;
+- Portabilidade → através dos containers conseguimos compartilhar o ambiente onde nossa aplicação roda, com as exatas características que a aplicação necessita para funcionar da maneira correta naquele momento.
+
+
 ---
 
 # Aula 15
