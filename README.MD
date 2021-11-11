@@ -799,6 +799,40 @@ CREATE TABLE IF NOT EXISTS contacts (
 
 # Aula 19
 
+## Conectando o Node ao Postgres
+
+- Instalar pacote: `yarn add pg` ou `npm install pg` ⇒ Pg é um pacote que faz a ponte entre o node e o postgres
+- Dentro da pasta **database** criar um arquivo *index.js*. Esse arquivo, será responsável por chamar o pacote pg e gerenciar as permissões e informações pertinentes para o controle e acesso ao banco de dados
+
+*index.js*
+
+```jsx
+const { Client } = require('pg');
+
+const client = new Client({
+  host: 'localhost',
+  port: 5432,
+  user: 'root',
+  password: 'root',
+  database: 'mycontacts'
+});
+
+client.connect();
+
+exports.query = (query) => {
+  const { rows } = await client.query(query);
+  return rows;
+}
+```
+
+**EXPLICANDO:**
+
+A `const client` define qual nosso banco de dados, acessando as configurações de criação do banco, com a porta, o usuário, a senha e o nome do banco.
+
+Ao final do arquivo, após a realização da conexão, é exportado um método para que possamos lidar com as queries SQL no nosso arquivo *repositories.js*
+
+Notar que, a variável *rows* é uma propriedade que existe dentro do objeto client.query. Essa propriedade é o que nos permite trabalhar com os dados das tabelas existentes nos bancos de dados
+
 ---
 
 # Aula 20
