@@ -819,7 +819,7 @@ const client = new Client({
 
 client.connect();
 
-exports.query = (query) => {
+exports.query = async (query) => {
   const { rows } = await client.query(query);
   return rows;
 }
@@ -836,6 +836,28 @@ Notar que, a variável *rows* é uma propriedade que existe dentro do objeto cli
 ---
 
 # Aula 20
+
+## Refatorando o método create
+
+- Importar o arquivo index da pasta database:
+
+```jsx
+const db = require('../../database');
+```
+
+- O método create refatorado fica:
+
+```jsx
+async create({ name, email, phone, category_id }) {
+    const [row] = await db.query(`
+      INSERT INTO contacts(name, email, phone, category_id)
+      VALUES($1, $2, $3, $4)
+      RETURNING *
+    `, [name, email, phone, category_id]);
+
+    return row;
+  }
+```
 
 ---
 
