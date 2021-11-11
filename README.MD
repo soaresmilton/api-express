@@ -752,6 +752,23 @@ Via de regra, a primeira coisa a se fazer é baixar a imagem que iremos utilizar
 
 # Aula 17
 
+## Preparando o Banco de Dados
+
+- Em src ⇒ criar folder database
+- Em database ⇒ criar file schema.sql
+- Verificar se o container do banco de dados está funcionando:  `sudo docker ps` se não estiver, ativar com o `sudo docker start <CONTAINER_NAME>`
+- Executar o container: `sudo docker exec -it <CONTAINER_NAME> bash`
+- Após entrar no terminal do container, executando o container, vamos logar no postgres com o seguinte código: `psql -U <POSTGRES_USER>` nesse caso POSTGRES_USER == root
+
+### Alguns comandos básicos do POSTGRES
+
+- `\l`  ⇒ lista a base de dados criada
+- `CREATE DATABASE <nome_do_banco>;` ⇒ Query para criar tabela em banco de dados SQL;
+- `\c <nome_do_banco>` ⇒ conecta ao banco de dados criado
+- `CREATE TABLE <nome_da_tabela> ();`  ⇒ Cria tabelas no SQL
+- `\dt` ⇒ lista todas as tabelas criadas dentro do banco
+- `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";` ⇒ Cria uma extensão que acessa a função para gerar UUIDs no postgres. Observar que: essa extensão só será criada se elá não existir no banco
+
 ---
 
 # Aula 18
