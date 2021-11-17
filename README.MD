@@ -962,6 +962,19 @@ async update(id, {
 
 # Aula 24
 
+## Refatorando o método DELETE
+
+Ajustando o método DELETE em ContactRepository.js:
+
+```jsx
+async delete(id) {
+    const deleteOperation = await db.query('DELETE FROM contacts WHERE id = $1', [id]);
+    return deleteOperation;
+  }
+```
+
+**OBS:** *Sempre que for utilizar o comando DELETE em SQL, garantir que estará sendo usado o WHERE, para evitar de deletar todo o banco de dados.*
+
 ---
 
 # Aula 25
