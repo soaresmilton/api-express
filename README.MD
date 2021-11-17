@@ -4,8 +4,6 @@ Esse repositório é um breve resumo, com as principais informações retiradas 
 
 ---
 ## Get in touch
-Feito com ❤️ by [**Milton Soares**](https://www.linkedin.com/in/soaresmilton/)
-
 [![Linkedin Badge](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/soaresmilton/)](https://www.linkedin.com/in/soaresmilton/)
 [![Youtube Badge](https://img.shields.io/badge/youtube-%23FF0000.svg?&style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCMsbUh0LDOMQCTBdBXwkFiQ/)
 [![Instagram Badge](https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white&link=https://www.instagram.com/soaresmiltinho/)](https://www.instagram.com/soaresmiltinho/)
@@ -255,7 +253,7 @@ Como a API a ser construída será relacionados a gerenciamento de contatos, por
 
     Estrutura de pastas nesse ponto da aplicação:
 
-    ![Arquitetura de pastas do nosso projeto até o momento](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a636e647-87c9-402a-a01d-039740a3cf8e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211028%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211028T010122Z&X-Amz-Expires=86400&X-Amz-Signature=c6847af7944c723aba3ba1188bb9187182eef8b5b8a9980c55049120a58fa1e2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+    ![Arquitetura de pastas do nosso projeto até o momento](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a636e647-87c9-402a-a01d-039740a3cf8e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211117%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211117T204153Z&X-Amz-Expires=86400&X-Amz-Signature=5ca03166b37c5a28e6ad35e84782ffa42c0eb01df85d204a42469631956b7f29&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
 
 
     Arquitetura do nosso projeto até o momento. Destacando o controller criado
@@ -713,7 +711,7 @@ Docker é uma *[container engine](https://www.docker.com/resources/what-containe
 
 O Docker, portanto, viabiliza o uso de VMs dentro de um host (AWS por exemplo) para rodar diferentes partes de nossa aplicação (uma VM para o Node na versão X outra VM para o node na versão Y e outra VM para o postgreSQL na versão Z) utilizando o kernel do Host, porém, cada qual em sua própria VM com suas libs e bins.
 
-![Imagem explicativa do funcionamento do docker](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2d46ee47-8b70-41c8-80d7-ecb620e59570/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211104%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211104T180132Z&X-Amz-Expires=86400&X-Amz-Signature=f5c83da13efad1db91236bf8bf9e447ae1872256223f803d6a89801a42b9bf22&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![Imagem explicativa do funcionamento do docker](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2d46ee47-8b70-41c8-80d7-ecb620e59570/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211117%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211117T204233Z&X-Amz-Expires=86400&X-Amz-Signature=2e036a93cbde7ebd7aa0e275fb452ddce6ebfbde7570ab1bce37475412879cea&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
 
 ### Por que usar Containers?
 
