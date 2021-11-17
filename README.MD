@@ -897,6 +897,45 @@ async findByEmail(email) {
 
 # Aula 22
 
+## Ordenando os resultados do SELECT
+
+Nessa aula vamos aprender a ordenar os resultados do SELECT. No caso, iremos ordenar a lista de contatos em ordem alfabética pelo nome. Dessa vez, para fazermos a ordenação das informações, iremos utilizar os recursos do próprio banco de dados:
+
+Ajustando o método **findAll:**
+
+```jsx
+async findAll() {
+    const rows = await db.query('SELECT * FROM contacts ORDER BY name ASC');
+    return rows;
+  }
+```
+
+Basicamente, dessa forma sempre iremos listar os contatos em ordem alfabética pelo nome.
+
+Para deixarmos essa ordenação dinâmica, em que o usuário pode ajustar a ordem em que os contatos aparecem por uma *query param*, podemos fazer os seguintes reajustes:
+
+Em ContactController.js, ajustando o método *index:*
+Abaixo estamos pegando o QUERY PARAM *orderBy:*
+
+```jsx
+async index(request, response) {
+    //lista todos os registros
+    const { orderBy } = request.query;
+    const contacts = await ContactRepository.findAll(orderBy);
+    response.json(contacts);
+  }
+```
+
+Agora, ajustando novamente o método *findAll* em ContactRepository.js:
+
+```jsx
+async findAll(orderBy = 'ASC') {
+    const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+    const rows = await db.query(`SELECT * FROM contacts ORDER BY name ${direction}`);
+    return rows;
+  }
+```
+
 ---
 
 # Aula 23
