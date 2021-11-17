@@ -863,6 +863,36 @@ async create({ name, email, phone, category_id }) {
 
 # Aula 21
 
+## Refatorando os métodos de find
+
+- **REFATORANDO O FINDALL:**
+
+**obs: Sempre que transformamos uma função ou uma método de uma classe em *async* a mesma passa a retornar uma *Promise*.**
+
+```jsx
+async findAll() {
+    const rows = await db.query('SELECT * FROM contacts');
+    return rows;
+  }
+```
+
+- **REFATORANDO O FIND BY ID:**
+
+```jsx
+async findById(id) {
+    const [row] = await db.query('SELECT * FROM contacts WHERE id = $1', [id]);
+    return row;
+  }
+```
+
+- **REFATORANDO O FIND BY EMAIL:**
+
+```jsx
+async findByEmail(email) {
+    const [row] = await db.query('SELECT * FROM contacts WHERE email = $1', [email]);
+    return row;
+  }
+```
 ---
 
 # Aula 22
