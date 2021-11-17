@@ -940,6 +940,24 @@ async findAll(orderBy = 'ASC') {
 
 # Aula 23
 
+## Refatorando o método UPDATE
+
+Ajustando o método UPDATE em ContactRepository.js:
+
+```jsx
+async update(id, {
+    name, email, phone, category_id,
+  }) {
+    const [row] = await db.query(`
+      UPDATE contacts
+      SET name = $1, email = $2, phone = $3, category_id = $4
+      WHERE id = $5
+      RETURNING *
+    `, [name, email, phone, category_id, id]);
+    return row;
+  }
+```
+
 ---
 
 # Aula 24
