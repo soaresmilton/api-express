@@ -979,6 +979,98 @@ async delete(id) {
 
 # Aula 25
 
+## Criando o módulo de Categorias
+
+Agora, para criar o módulo de Categorias, iremos basicamente repetir os passos anteriores, aplicados para criar os contacts.
+
+1. Organizar as routes.js, adicionando no arquivo as rotas para o endpoint de categories:
+
+```jsx
+const { Router } = require('express');
+const router = Router();
+const ContactController = require('./app/controllers/ContactController');
+const CategoryController = require('./app/controllers/CategoryController');
+
+router.get('/contacts', ContactController.index);
+router.get('/contacts/:id', ContactController.show);
+router.delete('/contacts/:id', ContactController.delete);
+router.post('/contacts', ContactController.store);
+router.put('/contacts/:id', ContactController.update);
+
+router.get('/categories', CategoryController.index);
+router.post('/categories', CategoryController.store);
+
+module.exports = router;
+```
+
+1. Criar o arquivo CategoryController.js em controllers e iniciar o mapeamento das rotas e controle das requisições e respostas, da mesma forma que foi feito para o ContactController.js. Em um primeiro momento, para testarmos as rotas:
+
+```jsx
+class CategoryController {
+  index(request, response) {
+    response.send('ok - index');
+  }
+
+  store(request, response) {
+    response.send('ok - store');
+  }
+}
+
+module.exports = new CategoryController();
+```
+
+1. Configurar o Insomnia para executar as requests
+2. Criar o arquivo CategoriesRepository.js em repositories.
+
+Uma vez setado a configuração inicial acima, vamos construir o método create em CategoriesRepository.js:
+
+```jsx
+async create({ name }) {
+    const [row] = await db.query(`
+      INSERT INTO categories(name)
+      VALUES($1)
+      RETURNING *
+    `, [name]);
+
+    return row;
+  }
+```
+
+Fazendo a adequação necessária para lidar com o método create em CategoryController.js. Ajustando o método *store:*
+
+```jsx
+async store(request, response) {
+    const { name } = request.body;
+
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required' });
+    }
+
+    const category = await CategoriesRepository.create({ name });
+
+    response.json(category);
+  }
+```
+
+Agora, vamos implementar o método de listagem das categorias. Em CategoriesRepository.js:
+
+```jsx
+async findAll() {
+    const rows = await db.query('SELECT * FROM categories ORDER BY name');
+    return rows;
+  }
+```
+
+Ajustando o método index() em CategoryController.js:
+
+```jsx
+async index(request, response) {
+    const categories = await CategoriesRepository.findAll();
+
+    response.json(categories);
+  }
+```
+
 ---
 
 # Aula 26
