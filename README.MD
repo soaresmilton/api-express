@@ -1122,5 +1122,53 @@ async findById(id) {
 ---
 
 # Aula 27
+## Capturando erros
+
+Nessa aula, iremos finalizar o desenvolvimento de nossa API. Especificamente, iremos tratar alguns erros comuns que possam ocorrer no desenvolvimento da aplicação.
+
+Utilizando o express, ele nos traz um Error Handler como um middleware para manipulação de erros não tratados no servidor. Para isso, acionamos esse midleware em nosso arquivo index.js (src), usando a seguinte código:
+
+***OBS:** Nesse caso, esse tratamento de erro funciona somente para métodos síncronos.*
+
+```jsx
+app.use((error, request, response, next) => {
+	console.log(error);
+	response.sendStatus(500);
+}
+```
+
+Para tratamento de erros assíncronos.
+
+- Instalar a biblioteca: `yarn add express-async-errors`
+- Chamar essa biblioteca dentro do inex.js (src) e o código do arquivo ficará assim:
+
+```jsx
+const { json } = require("express");
+const express = require("express");
+const routes = require('./routes');
+const app = express();
+
+require('express-async-errors');
+
+const PORT = 3000;
+
+app.use(json());
+app.use(routes);
+app.use((error, request, response, next) => {
+  console.log(error);
+  response.sendStatus(500);
+});
+
+app.listen(PORT, () => {
+  console.log(`SERVER IS RUNING AT ===> http://localhost:${PORT}`);
+});
+```
+---
+
+A estrutura final de arquivos ficou da seguinte forma:
+
+<div align="center">
+  <img src="github/estrutura-pastas.png" height="600px">
+</div>
 
 ---
