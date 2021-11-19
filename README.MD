@@ -711,7 +711,9 @@ Docker é uma *[container engine](https://www.docker.com/resources/what-containe
 
 O Docker, portanto, viabiliza o uso de VMs dentro de um host (AWS por exemplo) para rodar diferentes partes de nossa aplicação (uma VM para o Node na versão X outra VM para o node na versão Y e outra VM para o postgreSQL na versão Z) utilizando o kernel do Host, porém, cada qual em sua própria VM com suas libs e bins.
 
-![Imagem explicativa do funcionamento do docker](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2d46ee47-8b70-41c8-80d7-ecb620e59570/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211117%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211117T204233Z&X-Amz-Expires=86400&X-Amz-Signature=2e036a93cbde7ebd7aa0e275fb452ddce6ebfbde7570ab1bce37475412879cea&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+<div  align="center">
+<img src="github/docker.png" height="600px">
+</div>
 
 ### Por que usar Containers?
 
@@ -1072,6 +1074,50 @@ async index(request, response) {
 ---
 
 # Aula 26
+
+## Trabalhando com Joins
+
+Nessa aula iremos fazer a junção entre as tabelas contacts e categories. Dessa forma, na nossa API poderemos comunicar propriedades de cada contato, podendo identificar qual categoria esse contato faz parte.
+
+Toda a refatoração e construção de lógica para fazer a junção entre as tabelas, será feito usando SQL.
+
+- Reescrevendo o método *findAll()* em ContactRepository:
+
+```jsx
+async findAll(orderBy = 'ASC') {
+    const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+    const rows = await db.query(`
+      SELECT contacts.*, categories.name AS category_name
+      FROM contacts
+      LEFT JOIN categories ON categories.id = contacts.category_id
+      ORDER BY contacts.name ${direction}
+    `);
+    return rows;
+  }
+```
+
+**IMAGEM ILUSTRATIVA DO FUNCIONAMENTO DOS JOINS:**
+
+OBS: IMAGEM RETIRADA DO CURSO [https://jstack.com.br/](https://jstack.com.br/)
+
+<div align="center">
+  <img src="github/joins.png" width="700px">
+</div>
+
+
+
+- Refatorando o método *findById()* em ContactRepository:
+
+```jsx
+async findById(id) {
+    const [row] = await db.query(`
+    SELECT contacts.*, categories.name AS category_name
+    FROM contacts
+    LEFT JOIN categories ON categories.id = contacts.category_id
+    WHERE contacts.id = $1`, [id]);
+    return row;
+  }
+```
 
 ---
 
